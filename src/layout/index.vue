@@ -1,13 +1,29 @@
 <template>
-  <div>
-    <div>侧边栏</div>
+  <div class="app-wrapper">
+    <sidebar class="sidebar-container"></sidebar>
     <div class="main-container">
-      主要内容区域
-      <div>顶部菜单导航</div>
-      <div>
-        底部主要内容
-        <router-view></router-view>
-      </div>
+      <navbar></navbar>
+      <app-main></app-main>
     </div>
   </div>
 </template>
+
+<script>
+import { Navbar, Sidebar, AppMain } from './components'
+
+export default {
+  components: {
+    Navbar,
+    AppMain,
+    Sidebar
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+.app-wrapper {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+</style>
