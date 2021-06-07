@@ -10,7 +10,17 @@
     top: 0;
     bottom: 0;
     left: 0;
-    width: $sideBarWidth;
-    background-color: aquamarine;
+    width: $sideBarWidth !important;
+    background-color: $menuBg;
+
+    .el-menu {
+      border: none;
+      height: 100%;
+      width: 100% !important;
+    }
+    .sub-el-icon {
+      margin-right: 12px;
+      margin-left: -2px;
+    }
   }
 }
