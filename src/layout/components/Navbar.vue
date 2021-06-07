@@ -1,10 +1,31 @@
 <template>
-  <div class="navbar">Navbar</div>
+  <div class="navbar">
+    <hamburger
+      :is-active="isActive"
+      class="hamburger-container"
+      @toggleClick="toggleSideBar"
+    ></hamburger>
+  </div>
 </template>
 
 <script>
+import Hamburger from '@/components/Hamburger'
+
 export default {
-  name: 'Navbar'
+  name: 'Navbar',
+  components: {
+    Hamburger
+  },
+  data() {
+    return {
+      isActive: false
+    }
+  },
+  methods: {
+    toggleSideBar() {
+      this.isActive = !this.isActive
+    }
+  }
 }
 </script>
 
@@ -15,5 +36,15 @@ export default {
   position: relative;
   background: #fff;
   box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+}
+.hamburger-container {
+  line-height: 46px;
+  height: 100%;
+  float: left;
+  cursor: pointer;
+  transition: background 0.3s;
+  &:hover {
+    background: rgba(0, 0, 0, 0.025);
+  }
 }
 </style>
