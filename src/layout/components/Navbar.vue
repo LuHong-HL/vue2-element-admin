@@ -5,16 +5,19 @@
       class="hamburger-container"
       @toggleClick="toggleSideBar"
     ></hamburger>
+    <breadcrumb class="breadcrumb-container" />
   </div>
 </template>
 
 <script>
 import Hamburger from '@/components/Hamburger'
+import Breadcrumb from '@/components/Breadcrumb'
 
 export default {
   name: 'Navbar',
   components: {
-    Hamburger
+    Hamburger,
+    Breadcrumb
   },
   data() {
     return {
@@ -46,5 +49,8 @@ export default {
   &:hover {
     background: rgba(0, 0, 0, 0.025);
   }
+}
+.breadcrumb-container {
+  float: left;
 }
 </style>
