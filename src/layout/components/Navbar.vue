@@ -16,19 +16,20 @@
           <i class="el-icon-caret-bottom"></i>
         </div>
         <el-dropdown-menu slot="dropdown" class="user-dropdown">
-          <el-dropdown-item>
-            <router-link to="/">Home</router-link>
-          </el-dropdown-item>
-          <el-dropdown-item>
-            <a
-              href="https://github.com/LuHong-HL/vue2-element-admin"
-              target="_blank"
-              >Github</a
-            >
-          </el-dropdown-item>
-          <el-dropdown-item divided @click.native="logout">
-            <span>Log Out</span>
-          </el-dropdown-item>
+          <router-link to="/">
+            <el-dropdown-item> Home </el-dropdown-item>
+          </router-link>
+          <a
+            href="https://github.com/LuHong-HL/vue2-element-admin"
+            target="_blank"
+          >
+            <el-dropdown-item>Github</el-dropdown-item>
+          </a>
+          <span>
+            <el-dropdown-item divided @click.native="logout">
+              Log Out
+            </el-dropdown-item>
+          </span>
         </el-dropdown-menu>
       </el-dropdown>
     </div>
@@ -56,6 +57,9 @@ export default {
     },
     logout() {
       console.log('退出登录')
+      // 清除登陆状态
+      // 跳转登陆页面
+      this.$router.push('/login')
     }
   }
 }
