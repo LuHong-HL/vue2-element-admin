@@ -7,6 +7,8 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
+import '@/router/permission.js'
+
 import '@/styles/index.scss' // global css
 
 Vue.use(ElementUI)
