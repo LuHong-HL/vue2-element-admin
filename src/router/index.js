@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 import Layout from '@/layout/index.vue'
+import Login from '@/views/login'
 
 // vue router ≥ v3.1 后 ，回调形式改成promise api了，返回的是promise，如果没有捕获到错误，控制台始终会出现如上图的警告。
 const routerPush = VueRouter.prototype.push
@@ -69,6 +70,11 @@ const constantRoutes = [
         meta: { title: 'Tree', icon: 'tree' }
       }
     ]
+  },
+  {
+    path: '/login',
+    component: Login,
+    name: 'Login'
   }
 ]
 
