@@ -1,13 +1,19 @@
 import { login, getInfo, logout } from '@/api/user'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 
-const state = {
-  token: getToken(), // 令牌
-  name: '', // 用户名
-  avatar: '' // 用户头像链接
+const getDefaultState = () => {
+  return {
+    token: getToken(), // 令牌
+    name: '', // 用户名
+    avatar: '' // 用户头像链接
+  }
 }
+const state = getDefaultState()
 
 const mutations = {
+  RESET_STATE: state => {
+    Object.assign(state, getDefaultState())
+  },
   SET_TOKEN: (state, token) => {
     state.token = token
   },
@@ -71,6 +77,14 @@ const actions = {
         .catch(error => {
           reject(error)
         })
+    })
+  },
+  // remove token
+  resetToken({ commit }) {
+    return new Promise(resolve => {
+      removeToken() // must remove  token  first
+      commit('RESET_STATE')
+      resolve()
     })
   }
 }
