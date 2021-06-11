@@ -12,6 +12,10 @@ import '@/router/permission.js'
 
 import '@/styles/index.scss' // global css
 
+// simple mock
+import { mockXHR } from '../mock'
+mockXHR()
+
 // 挂载axios到原型上
 Vue.prototype.$axios = axios
 
