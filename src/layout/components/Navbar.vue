@@ -1,10 +1,6 @@
 <template>
   <div class="navbar">
-    <hamburger
-      :is-active="isActive"
-      class="hamburger-container"
-      @toggleClick="toggleSideBar"
-    ></hamburger>
+    <hamburger :is-active="isActive" class="hamburger-container" @toggleClick="toggleSideBar"></hamburger>
     <breadcrumb class="breadcrumb-container" />
     <div class="right-menu">
       <el-dropdown trigger="click" class="avatar-container">
@@ -19,16 +15,11 @@
           <router-link to="/">
             <el-dropdown-item> Home </el-dropdown-item>
           </router-link>
-          <a
-            href="https://github.com/LuHong-HL/vue2-element-admin"
-            target="_blank"
-          >
+          <a href="https://github.com/LuHong-HL/vue2-element-admin" target="_blank">
             <el-dropdown-item>Github</el-dropdown-item>
           </a>
           <span>
-            <el-dropdown-item divided @click.native="logout">
-              Log Out
-            </el-dropdown-item>
+            <el-dropdown-item divided @click.native="logout"> Log Out </el-dropdown-item>
           </span>
         </el-dropdown-menu>
       </el-dropdown>
@@ -55,11 +46,11 @@ export default {
     toggleSideBar() {
       this.isActive = !this.isActive
     },
-    logout() {
-      console.log('退出登录')
+    async logout() {
       // 清除登陆状态
+      await this.$store.dispatch('user/logout')
       // 跳转登陆页面
-      this.$router.push('/login')
+      this.$router.push(`/login?redirect=${this.$route.fullPath}`)
     }
   }
 }
