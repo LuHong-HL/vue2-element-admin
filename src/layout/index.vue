@@ -1,8 +1,10 @@
 <template>
-  <div class="app-wrapper">
+  <div :class="classObj" class="app-wrapper">
     <sidebar class="sidebar-container"></sidebar>
     <div class="main-container">
-      <navbar></navbar>
+      <div>
+        <navbar></navbar>
+      </div>
       <app-main></app-main>
     </div>
   </div>
@@ -16,6 +18,21 @@ export default {
     Navbar,
     AppMain,
     Sidebar
+  },
+  computed: {
+    sidebar() {
+      return this.$store.state.app.sidebar
+    },
+    device() {
+      return this.$store.state.app.device
+    },
+    classObj() {
+      return {
+        hideSidebar: !this.sidebar.opened,
+        openSidebar: this.sidebar.opened,
+        withoutAnimation: this.sidebar.withoutAnimation
+      }
+    }
   }
 }
 </script>

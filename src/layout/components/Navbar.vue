@@ -1,14 +1,11 @@
 <template>
   <div class="navbar">
-    <hamburger :is-active="isActive" class="hamburger-container" @toggleClick="toggleSideBar"></hamburger>
+    <hamburger :is-active="sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar"></hamburger>
     <breadcrumb class="breadcrumb-container" />
     <div class="right-menu">
       <el-dropdown trigger="click" class="avatar-container">
         <div class="avatar-wrapper">
-          <img
-            src="https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif?imageView2/1/w/80/h/80"
-            class="user-avatar"
-          />
+          <img :src="avatar + '?imageView2/1/w/80/h/80'" class="user-avatar" />
           <i class="el-icon-caret-bottom"></i>
         </div>
         <el-dropdown-menu slot="dropdown" class="user-dropdown">
@@ -28,6 +25,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import Hamburger from '@/components/Hamburger'
 import Breadcrumb from '@/components/Breadcrumb'
 
@@ -38,13 +36,14 @@ export default {
     Breadcrumb
   },
   data() {
-    return {
-      isActive: false
-    }
+    return {}
+  },
+  computed: {
+    ...mapGetters(['sidebar', 'avatar'])
   },
   methods: {
     toggleSideBar() {
-      this.isActive = !this.isActive
+      this.$store.dispatch('app/toggleSideBar')
     },
     async logout() {
       // 清除登陆状态

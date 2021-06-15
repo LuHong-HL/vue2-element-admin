@@ -46,7 +46,7 @@ const constantRoutes = [
         path: 'home',
         name: 'Home',
         component: () => import('../views/home/index.vue'),
-        meta: { title: 'Home', icon: 'el-icon-s-home' }
+        meta: { title: 'Home', icon: 'eye' }
       }
     ]
   },
@@ -61,13 +61,13 @@ const constantRoutes = [
         path: 'table',
         name: 'Table',
         component: () => import('@/views/table/index'),
-        meta: { title: 'Table', icon: 'table' }
+        meta: { title: 'Table', icon: 'eye' }
       },
       {
         path: 'tree',
         name: 'Tree',
         component: () => import('@/views/tree/index'),
-        meta: { title: 'Tree', icon: 'tree' }
+        meta: { title: 'Tree', icon: 'eye' }
       }
     ]
   },
