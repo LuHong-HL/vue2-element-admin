@@ -12,6 +12,8 @@ import '@/router/permission.js'
 
 import '@/styles/index.scss' // global css
 
+import '@/icons' // icon
+
 // simple mock
 import { mockXHR } from '../mock'
 mockXHR()
