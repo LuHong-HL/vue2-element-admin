@@ -12,6 +12,7 @@
 
 <script>
 import { Navbar, Sidebar, AppMain } from './components'
+import ResizeMixin from './mixin/ResizeHandler'
 
 export default {
   components: {
@@ -19,6 +20,7 @@ export default {
     AppMain,
     Sidebar
   },
+  mixins: [ResizeMixin],
   computed: {
     sidebar() {
       return this.$store.state.app.sidebar
@@ -30,7 +32,8 @@ export default {
       return {
         hideSidebar: !this.sidebar.opened,
         openSidebar: this.sidebar.opened,
-        withoutAnimation: this.sidebar.withoutAnimation
+        withoutAnimation: this.sidebar.withoutAnimation,
+        mobile: this.device === 'mobile'
       }
     }
   }
